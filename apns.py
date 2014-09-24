@@ -527,7 +527,9 @@ class GatewayConnection(APNsConnection):
                 try:
                     self.write(message)
                 except socket_error as e:
-                    _logger.info("sending notification with id:" + str(identifier) + " to APNS failed: " + str(type(e)) + ": " + str(e))
+                    _logger.error("sending notification with id:" + str(identifier) + " to APNS failed: " + str(type(e)) + ": " + str(e))
+                    self._disconnect()
+
 
         else:
             self.write(self._get_notification(token_hex, payload))
