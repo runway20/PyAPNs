@@ -529,7 +529,6 @@ class GatewayConnection(APNsConnection):
                 except socket_error as e:
                     _logger.error("sending notification with id:" + str(identifier) + " to APNS failed: " + str(type(e)) + ": " + str(e))
                     self._disconnect()
-                    raise
 
 
         else:
